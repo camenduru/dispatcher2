@@ -15,7 +15,7 @@ server_port = os.getenv('com_camenduru_server_port')
 
 def loop():
     client = MongoClient(mongodb_uri)
-    db = client['web']
+    db = client['web2']
     collection_job = db['job']
 
     def check_jobs():
