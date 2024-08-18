@@ -8,7 +8,7 @@ Environment="com_camenduru_mongodb_uri=mongodb://127.0.0.1:27017/web2"
 Environment="com_camenduru_worker_uri=https://api.runpod.ai/v2/ID/run"
 Environment="com_camenduru_runpod_token=runpod_token"
 Environment="com_camenduru_job_type=flux.1-dev"
-Environment="com_camenduru_job_source=WEB"
+Environment="com_camenduru_job_source=WEB:API"
 Environment="com_camenduru_server_port=1355"
 WorkingDirectory=/content/com.camenduru/dispatcher2
 ExecStart=/bin/bash -c 'python dispatcher2_runpod.py'
