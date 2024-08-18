@@ -10,7 +10,7 @@ mongodb_uri = os.getenv('com_camenduru_mongodb_uri')
 worker_uri = os.getenv('com_camenduru_worker_uri')
 runpod_token = os.getenv('com_camenduru_runpod_token')
 job_type = os.getenv('com_camenduru_job_type')
-job_source = os.getenv('com_camenduru_job_source')
+job_sources = os.getenv('com_camenduru_job_source', '').split(':')
 server_port = os.getenv('com_camenduru_server_port')
 
 def loop():
@@ -19,7 +19,7 @@ def loop():
     collection_job = db['job']
 
     def check_jobs():
-        waiting_documents = collection_job.find({"$and":[ {"status":"WAITING"}, {"source":job_source}]})
+        waiting_documents = collection_job.find({"status": "WAITING", "source": {"$in": job_sources}})
         for waiting_document in waiting_documents:
             server = waiting_document['type']
             if(server==job_type):
